@@ -9,9 +9,9 @@
                     @if(!empty($sliders))
                         <div class="carousel-inner">
 
-                            @php($i=1)
-                            @foreach($sliders as $slider)
-                                @if($i<=1)
+
+
+
                                         <div class="row min-height-420 py-7 py-md-0">
 
                                             <div class="offset-xl-3 col-xl-4 col-6 mt-md-8">
@@ -20,15 +20,47 @@
                                                     {{__('localize.welcome')}} {{\App\Helpers\getShopName()}} <span class="d-block font-size-55"></span>
                                                 </h1>
                                                </div>
+                                            @if(count($sliders)>2)
                                             <div class="col-xl-5 col-6  d-flex align-items-center"
                                                  data-scs-animation-in="fadeInRight"
                                                  data-scs-animation-delay="500">
-                                                <img class="img-fluid" src="/images/slider/{{$sliders[0]->slider_image}}" alt="Image Description">
+                                                <div id="top-slide" class="carousel slide" data-ride="carousel" data-interval="3000">
+                                                    <!-- Indicators -->
+                                                    <ul class="carousel-indicators">
+                                                        <li data-target="#top-slide" data-slide-to="0" class=""></li>
+                                                        <li data-target="#top-slide" data-slide-to="1" class=""></li>
+                                                        <li data-target="#top-slide" data-slide-to="2" class="active"></li>
+                                                    </ul>
+
+                                                    <!-- The slideshow -->
+                                                    <div class="carousel-inner">
+
+                                                        <div class="carousel-item">
+                                                            <img src="/images/slider/{{$sliders[0]->slider_image}}" alt="Los Angeles" width="500" height="250px">
+                                                        </div>
+
+                                                        <div class="carousel-item">
+                                                            <img src="/images/slider/{{$sliders[1]->slider_image}}" alt="Los Angeles" width="500" height="250px">
+                                                        </div>
+                                                        <div class="carousel-item active">
+                                                            <img src="/images/slider/{{$sliders[2]->slider_image}}" alt="Los Angeles" width="500" height="250px">
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Left and right controls -->
+                                                    <a class="carousel-control-prev" href="#top-slide" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon"></span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#top-slide" data-slide="next">
+                                                        <span class="carousel-control-next-icon"></span>
+                                                    </a>
+                                                </div>
                                             </div>
+                                            @endif
                                         </div>
-                                @endif
-                                @php($i++)
-                            @endforeach
+
+
+
                         </div>
                     @endif
 
